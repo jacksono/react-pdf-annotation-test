@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+
+// v 3.0.1
 import { Document, Page, setOptions } from 'react-pdf/dist/entry.webpack';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
+
+// v 2.5.3
+// import { Document, Page, setOptions } from 'react-pdf/build/entry.webpack';
+// import 'react-pdf/build/annotation_layer_builder.css';
 
 
 setOptions({

@@ -5,7 +5,7 @@
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-pdf": "^3.0.0-alpha.4"
+    "react-pdf": "^3.0.1"
   },
   "devDependencies": {
     "react-scripts": "1.1.1"
