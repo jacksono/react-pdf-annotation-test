@@ -7,7 +7,7 @@ import 'react-pdf/dist/Page/AnnotationLayer.css';
 // v 2.5.3
 // import { Document, Page, setOptions } from 'react-pdf/build/entry.webpack';
 // import 'react-pdf/build/annotation_layer_builder.css';
-
+var Highlight = require('react-highlighter');
 
 setOptions({
   cMapUrl: 'cmaps/',
@@ -39,9 +39,9 @@ class Sample extends Component {
   }
 
   updateWindowDimensions = () => {
-    this.setState({ 
-      width: window.innerWidth, 
-      height: window.innerHeight 
+    this.setState({
+      width: window.innerWidth,
+      height: window.innerHeight
     });
     this.setPdfScale(this.state.pdfWidth, this.state.pdfHeight);
   }
@@ -51,7 +51,7 @@ class Sample extends Component {
     const { dps, width, height } = this.state;
 
     this.setState({
-      pdfWidth: pdfWidth, 
+      pdfWidth: pdfWidth,
       pdfHeight: pdfHeight
     });
 
@@ -86,7 +86,7 @@ class Sample extends Component {
     this.setState({
       numPages,
     })
-  
+
 
   onPageLoadSuccess = (page) => {
     this.setState({
@@ -117,18 +117,38 @@ class Sample extends Component {
             >
               {
                 Array.from(
-                  new Array(numPages),
+                  new Array(1),
                   (el, index) => (
                     <Page
                       onLoadSuccess={this.onPageLoadSuccess}
                       key={`page_${index + 1}`}
                       pageNumber={index + 1}
-                      scale={scale}
+                      customTextRenderer={({ str, itemIndex }) => {
+                        if (str.toLowerCase().includes('personal')) {
+                          return (<div className="marked">
+
+                          <Highlight
+                            search="personal"
+                            matchStyle={{backgroundColor: 'yellow', color: 'black', fontSize: '9px'}}
+                          >
+                          {str}
+                          </Highlight>
+                          </div>)
+                        }
+                      }}
                     />
                   ),
                 )
               }
             </Document>
+            { document.getElementsByTagName('mark')[0] &&
+            <Highlight
+              search="brown"
+              matchStyle={{backgroundColor: 'yellow', opacity: '0.8'}}
+            >
+            {document.getElementsByTagName('mark')[0].innerHTML}
+            </Highlight>
+          }
           </div>
         </div>
       </div>
