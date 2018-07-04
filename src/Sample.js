@@ -112,7 +112,7 @@ class Sample extends Component {
 
           <div className="Example__container__document" style={{display: 'flex', justifyContent:'center'}}>
             <Document
-              file={'/CircleofFifths.pdf'}
+              file={'/CircleofFifths2.pdf'}
               onLoadSuccess={this.onDocumentLoadSuccess}
             >
               {
