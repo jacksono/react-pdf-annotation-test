@@ -104,7 +104,7 @@ class Sample extends Component {
       <div className="Example">
         <div style={{height: 90}}>
           <header>
-            <h3>React-pdf AnnotationLayer</h3>
+            <h3>Sample PDF view</h3>
           </header>
 
         </div>
